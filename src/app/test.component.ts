@@ -20,8 +20,7 @@ export class TestComponent {
     return this.title;
   }
 
-  constructor() {
-    let service = new TestService();
+  constructor(service: TestService) {
     this.courses = service.getCourses();
   }
 }
