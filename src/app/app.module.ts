@@ -9,6 +9,7 @@ import {TestService} from './test.service';
 import { AuthorsComponent } from './authors/authors.component';
 import {AuthorsService} from './authors.service';
 import { CoursesComponent } from './courses/courses.component';
+import {SummaryPipe} from './summary.pipe';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { CoursesComponent } from './courses/courses.component';
     TestComponent,
     CourseComponent,
     AuthorsComponent,
-    CoursesComponent
+    CoursesComponent,
+    SummaryPipe
   ],
   imports: [
     BrowserModule,
