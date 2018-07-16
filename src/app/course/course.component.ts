@@ -10,6 +10,7 @@ export class CourseComponent implements OnInit {
   imgUrl = 'http://lorempixel.com/400/200';
   colSpan = 2;
   tableText = 'sadfasdf dsafsadfsd sdfsadfsdsdfsdaf sdfsadf';
+  isActive = true;
   ngOnInit() {
   }
 }
