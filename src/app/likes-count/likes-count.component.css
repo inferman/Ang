@@ -1,0 +1,7 @@
+.heart-icon {
+  color: #ccc;
+  cursor: pointer;
+}
+.heart-icon.active {
+  color: deeppink;
+}
