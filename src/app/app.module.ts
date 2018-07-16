@@ -3,14 +3,12 @@ import { FormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
-import { FavoriteComponent } from './favorite/favorite.component';
-import { PanelComponent } from './panel/panel.component';
+import { DirsComponent } from './dirs/dirs.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    FavoriteComponent,
-    PanelComponent
+    DirsComponent,
   ],
   imports: [
     BrowserModule,
