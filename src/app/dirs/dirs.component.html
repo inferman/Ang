@@ -19,10 +19,17 @@
   No courses yet
 </div>-->
 
-<button type="button" (click)="onAdd()">Add field</button>
+<!--<button type="button" (click)="onAdd()">Add field</button>
 <ul>
   <li *ngFor="let course of courses; index as i">
     {{i+1}} - {{ course.name }}
     <button type="button" (click)="onRemove(i)">Remove Item</button>
+  </li>
+</ul>-->
+
+<button type="button" (click)="loadCourses()">Load Courses</button>
+<ul>
+  <li *ngFor="let course of courses; trackBy: trackCourse; index as i">
+    {{i+1}} - {{ course.name }}
   </li>
 </ul>

@@ -6,14 +6,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./dirs.component.css']
 })
 export class DirsComponent {
-  coursesList = [1, 2];
-  courses = [
-    { id: 1, name: 'course1' },
-    { id: 2, name: 'course2' },
-    { id: 3, name: 'course3' }
-  ];
+  //coursesList = [1, 2];
+  courses;
 
-  onAdd() {
+  /*onAdd() {
     this.courses.push({
       id: this.courses.length + 1,
       name: `course${this.courses.length + 1}`
@@ -22,5 +18,18 @@ export class DirsComponent {
 
   onRemove(index) {
     this.courses.splice(index, 1);
+  }*/
+
+  loadCourses() {
+    this.courses = [
+      { id: 1, name: 'course1' },
+      { id: 2, name: 'course2' },
+      { id: 3, name: 'course3' }
+    ];
   }
+
+  trackCourse(index, course) {
+    return course ? course.id : undefined
+  }
+
 }
