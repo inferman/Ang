@@ -1,4 +1,4 @@
-<div *ngIf="coursesList.length; then courses else noCourses"></div>
+<!--<div *ngIf="coursesList.length; then courses else noCourses"></div>
 <ng-template #courses>
   <h2>list of courses</h2>
   <ul>
@@ -7,4 +7,15 @@
 </ng-template>
 <ng-template #noCourses>
   No courses yet
-</ng-template>
+</ng-template>-->
+
+<div [hidden]="!coursesList.length">
+  <h2>list of courses</h2>
+  <ul>
+    <li *ngFor="let item of coursesList">{{ item }}</li>
+  </ul>
+</div>
+<div [hidden]="coursesList.length">
+  No courses yet
+</div>
+
