@@ -19,13 +19,10 @@
   No courses yet
 </div>-->
 
+<button type="button" (click)="onAdd()">Add field</button>
 <ul>
-  <li *ngFor="let course of courses; index as i"> {{i+1}} - {{ course.name }} </li>
-</ul>
-
-<ul>
-  <li *ngFor="let course of courses; even as isEven">
-    {{ course.name }}
-    <span *ngIf="isEven">(EVEN)</span>
+  <li *ngFor="let course of courses; index as i">
+    {{i+1}} - {{ course.name }}
+    <button type="button" (click)="onRemove(i)">Remove Item</button>
   </li>
 </ul>
