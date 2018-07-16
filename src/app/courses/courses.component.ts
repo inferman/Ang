@@ -13,6 +13,7 @@ export class CoursesComponent {
     price: 190.95,
     releaseDate: new Date(2016, 3, 1)
   };
+  txt = '';
   plainText = `
     Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur delectus dicta dolores neque sequi ut. Aut
   corporis deleniti dignissimos esse et ex, libero nemo nesciunt nisi quas quasi, ratione repellendus sapiente tempora
@@ -22,6 +23,13 @@ export class CoursesComponent {
   tempore tenetur vero voluptate voluptatum! Amet blanditiis consequatur expedita ipsa ipsam, quam voluptate
   voluptatibus. Delectus deleniti eaque, earum fuga molestias nostrum provident repudiandae!
   `;
+
+  calcTextLength() {
+    if (!this.txt.length)
+      return false;
+    console.log(this.txt.length);
+  };
+
   constructor() { }
 
 
