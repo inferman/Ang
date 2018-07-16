@@ -1,9 +1,15 @@
 <h1>{{ rootTitle }}</h1>
 <!--<favorite [isFavorite]="post.isFavorite" (change)="onFavoriteChanged($event)"></favorite>-->
-<bootstrap-panel>
+<!--<bootstrap-panel>
   <ng-container class="heading">Heading</ng-container>
   <div class="body">
     <h2>Body</h2>
     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum placeat provident quae quia repudiandae vel.</p>
   </div>
-</bootstrap-panel>
+</bootstrap-panel>-->
+
+
+<likes
+  [isActive]="tweet.isLiked"
+  [likesCount]="tweet.likesCount">
+</likes>
