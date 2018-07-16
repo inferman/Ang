@@ -19,3 +19,11 @@
   <div class="column" [style.backgroundColor]="isActive ? 'red' : '#0f0'">{{ title }}</div>
   <div class="column">{{ title }}</div>
 </div>
+
+<button (click)="onSave($event)">Button</button>
+<input type="text" (keyup.enter)="onKeyup()">
+<input type="text" #text (keyup.enter)="onKeyupTxt(text.value)">
+<!--one ways binding-->
+<input type="text" [value]="someVariable" (keyup.enter)="onKeyupVar()">
+<!--two ways binding-->
+<input type="text" [(ngModel)]="someVariable" (keyup.enter)="onKeyupVar()">
