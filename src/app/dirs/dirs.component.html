@@ -9,7 +9,7 @@
   No courses yet
 </ng-template>-->
 
-<div [hidden]="!coursesList.length">
+<!--<div [hidden]="!coursesList.length">
   <h2>list of courses</h2>
   <ul>
     <li *ngFor="let item of coursesList">{{ item }}</li>
@@ -17,5 +17,15 @@
 </div>
 <div [hidden]="coursesList.length">
   No courses yet
-</div>
+</div>-->
 
+<ul>
+  <li *ngFor="let course of courses; index as i"> {{i+1}} - {{ course.name }} </li>
+</ul>
+
+<ul>
+  <li *ngFor="let course of courses; even as isEven">
+    {{ course.name }}
+    <span *ngIf="isEven">(EVEN)</span>
+  </li>
+</ul>

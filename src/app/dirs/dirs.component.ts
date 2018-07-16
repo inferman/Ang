@@ -7,6 +7,9 @@ import { Component } from '@angular/core';
 })
 export class DirsComponent {
   coursesList = [1, 2];
-  constructor() { }
-
+  courses = [
+    { id: 1, name: 'course1' },
+    { id: 2, name: 'course2' },
+    { id: 3, name: 'course3' }
+  ];
 }
