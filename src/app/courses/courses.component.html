@@ -1,0 +1,27 @@
+<h2>{{course.title | uppercase}}</h2>
+<ul>
+  <li>
+    <dl>
+      <dt>Course rating: </dt>
+      <dd>{{course.rating | number:'1.2-2'}}</dd>
+    </dl>
+  </li>
+  <li>
+    <dl>
+      <dt>Course students number: </dt>
+      <dd>{{course.students | number}}</dd>
+    </dl>
+  </li>
+  <li>
+    <dl>
+      <dt>Course price: </dt>
+      <dd>{{course.price | currency:'AUD':true:'3.2-2'}}</dd>
+    </dl>
+  </li>
+  <li>
+    <dl>
+      <dt>Course release date: </dt>
+      <dd>{{course.releaseDate | date:'shortDate'}}</dd>
+    </dl>
+  </li>
+</ul>
