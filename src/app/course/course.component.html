@@ -16,6 +16,6 @@
 
 <div class="row">
   <div class="column" [class.active]="isActive">{{ title }}</div>
-  <div class="column">{{ title }}</div>
+  <div class="column" [style.backgroundColor]="isActive ? 'red' : '#0f0'">{{ title }}</div>
   <div class="column">{{ title }}</div>
 </div>
