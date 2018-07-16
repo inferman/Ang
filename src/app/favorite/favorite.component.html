@@ -1,2 +1,9 @@
-<p [textContent]="isFavorite ? 'favorite text' : 'regulat text'"></p>
+<p [textContent]="isSelected ? 'favorite text' : 'regulat text'"></p>
 <button type="button" (click)="onClick()">Change favorite status</button>
+
+<span
+  class="glyphicon"
+  [class.glyphicon-star]="isSelected"
+  [class.glyphicon-star-empty]="!isSelected"
+  (click)="onClick()"
+></span>
