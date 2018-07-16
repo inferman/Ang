@@ -8,4 +8,10 @@ import { Component } from '@angular/core';
 export class AppComponent {
   rootTitle = 'Angular root app title';
 
+  task = {
+    title: 'Title',
+    assignee: {
+      name: null
+    }
+  };
 }

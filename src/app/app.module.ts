@@ -4,11 +4,13 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { DirsComponent } from './dirs/dirs.component';
+import { InputFormatDirective } from './input-format.directive';
 
 @NgModule({
   declarations: [
     AppComponent,
     DirsComponent,
+    InputFormatDirective,
   ],
   imports: [
     BrowserModule,

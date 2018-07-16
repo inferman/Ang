@@ -29,7 +29,7 @@ export class DirsComponent {
   }
 
   trackCourse(index, course) {
-    return course ? course.id : undefined
+    return course ? course.id : undefined;
   }
 
 }
