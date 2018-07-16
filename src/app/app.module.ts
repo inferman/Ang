@@ -5,12 +5,14 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { DirsComponent } from './dirs/dirs.component';
 import { InputFormatDirective } from './input-format.directive';
+import { ContactFormComponent } from './contact-form/contact-form.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     DirsComponent,
     InputFormatDirective,
+    ContactFormComponent,
   ],
   imports: [
     BrowserModule,
