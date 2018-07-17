@@ -18,6 +18,7 @@ export class ContactFormComponent implements OnInit {
       return false
     }
     alert('form submitted');
+    console.log(f);
   }
 
   ngOnInit() {
