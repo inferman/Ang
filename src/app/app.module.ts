@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { DirsComponent } from './dirs/dirs.component';
 import { InputFormatDirective } from './input-format.directive';
 import { ContactFormComponent } from './contact-form/contact-form.component';
+import { CourseFormComponent } from './course-form/course-form.component';
 
 @NgModule({
   declarations: [
@@ -13,6 +14,7 @@ import { ContactFormComponent } from './contact-form/contact-form.component';
     DirsComponent,
     InputFormatDirective,
     ContactFormComponent,
+    CourseFormComponent,
   ],
   imports: [
     BrowserModule,
