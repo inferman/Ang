@@ -43,6 +43,16 @@
       <option *ngFor="let method of contactMethod" [value]="method.id">{{ method.name }}</option>
     </select>
   </div>
+
+  <div *ngFor="let method of contactMethod" class="radio">
+    <label>
+      <input type="radio" name="contactMethod" [value]="method.id" ngModel>
+      {{ method.name }}
+    </label>
+  </div>
+
+
+
   <p>{{ f.value | json }}</p>
   <div *ngIf="userInfo.touched && userInfo.invalid"> list of errors for userInfo fields group  </div>
 </form>
