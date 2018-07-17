@@ -21,6 +21,11 @@ export class ContactFormComponent implements OnInit {
     console.log(f);
   }
 
+  contactMethod = [
+    {id: 1, name: 'Email'},
+    {id: 2, name: 'Phone'},
+  ];
+
   ngOnInit() {
   }
 

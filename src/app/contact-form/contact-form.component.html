@@ -32,6 +32,17 @@
         name="isSubscribed"> Subscribe to some shit
     </label>
   </div>
+  <div class="form-group">
+    <label for="contactMethod">Contact Method</label>
+    <select
+      name="contactMethod"
+      ngModel
+      id="contactMethod"
+      class="form-control">
+      <option value="">Select Option</option>
+      <option *ngFor="let method of contactMethod" [value]="method.id">{{ method.name }}</option>
+    </select>
+  </div>
   <p>{{ f.value | json }}</p>
   <div *ngIf="userInfo.touched && userInfo.invalid"> list of errors for userInfo fields group  </div>
 </form>
