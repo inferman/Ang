@@ -21,6 +21,17 @@
       #comment="ngModel"></textarea>
     <div *ngIf="comment.touched && comment.errors">You need to provide some text</div>
   </div>
-  <button class="btn btn-primary">Submit</button>
+  <button
+    class="btn btn-primary"
+    [disabled]="f.invalid">Submit
+  </button>
+  <div class="checkbox">
+    <label>
+      <input type="checkbox"
+        ngModel
+        name="isSubscribed"> Subscribe to some shit
+    </label>
+  </div>
+  <p>{{ f.value | json }}</p>
   <div *ngIf="userInfo.touched && userInfo.invalid"> list of errors for userInfo fields group  </div>
 </form>
