@@ -13,6 +13,13 @@ export class ContactFormComponent implements OnInit {
     console.log(x);
   }
 
+  submit(f) {
+    if(f.invalid) {
+      return false
+    }
+    alert('form submitted');
+  }
+
   ngOnInit() {
   }
 
