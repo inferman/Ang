@@ -27,4 +27,12 @@ export class SignupValidators {
       }, 2000);
     });
   }
+  static matchPasswords(ctrl: AbstractControl): ValidationErrors | null {
+    let newPassword = ctrl.get('newPassword');
+    let confirmPassword = ctrl.get('confirmPassword');
+    if (newPassword.value !== confirmPassword.value) {
+      return { matchPasswords: true };
+    }
+    return null;
+  }
 }

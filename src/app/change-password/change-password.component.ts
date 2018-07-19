@@ -12,19 +12,19 @@ export class ChangePasswordComponent {
   constructor(fb: FormBuilder) {
     this.changePassword = fb.group({
       oldPassword: ['', Validators.required, SignupValidators.checkOldPassword],
-      passwords: fb.group({
-        newPassword: ['', Validators.required],
-        confirmPassword: ['', Validators.required]
-      })
+      newPassword: ['', Validators.required],
+      confirmPassword: ['', Validators.required]
+    }, {
+      validator: SignupValidators.matchPasswords
     });
   }
   get oldPassword() {
     return this.changePassword.get('oldPassword');
   }
   get newPassword() {
-    return this.changePassword.get('passwords.newPassword');
+    return this.changePassword.get('newPassword');
   }
   get confirmPassword() {
-    return this.changePassword.get('passwords.confirmPassword');
+    return this.changePassword.get('confirmPassword');
   }
 }
