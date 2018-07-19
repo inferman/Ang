@@ -9,17 +9,19 @@ import {SignupValidators} from '../common/customValidators/signupForm.validators
 })
 export class SignupFormComponent {
   myForm = new FormGroup({
-    username: new FormControl('',
-      Validators.required,
-      SignupValidators.shouldBeUnique
-    ),
-    password: new FormControl('', [
-      Validators.required,
-      Validators.minLength(2),
-      SignupValidators.cannotContainSpace
-    ],
-      SignupValidators.shouldBeUnique
-    )
+    account: new FormGroup({
+      username: new FormControl('',
+        Validators.required,
+        SignupValidators.shouldBeUnique
+      ),
+      password: new FormControl('', [
+          Validators.required,
+          Validators.minLength(2),
+          SignupValidators.cannotContainSpace
+        ],
+        SignupValidators.shouldBeUnique
+      )
+    })
   });
 
   onChange(obj, formCtrl) {
@@ -33,6 +35,6 @@ export class SignupFormComponent {
   }
 
   get password() {
-    return this.myForm.get('password');
+    return this.myForm.get('account.password');
   }
 }
