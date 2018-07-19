@@ -19,6 +19,7 @@
       class="alert alert-danger"
       *ngIf="password.touched && password.invalid">
       <div *ngIf="password.errors.required">Password is required</div>
+      <div *ngIf="password.errors.cannotContainSpace">Password can't contain space</div>
       <div *ngIf="password.errors.minlength">Password should be minimum {{ password.errors.minlength.requiredLength }} characters</div>
     </div>
   </div>
