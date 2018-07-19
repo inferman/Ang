@@ -7,6 +7,7 @@ import { DirsComponent } from './dirs/dirs.component';
 import { InputFormatDirective } from './input-format.directive';
 import { CourseFormComponent } from './course-form/course-form.component';
 import { SignupFormComponent } from './signup-form/signup-form.component';
+import { FormsArrComponent } from './forms-arr/forms-arr.component';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { SignupFormComponent } from './signup-form/signup-form.component';
     DirsComponent,
     InputFormatDirective,
     CourseFormComponent,
-    SignupFormComponent
+    SignupFormComponent,
+    FormsArrComponent
   ],
   imports: [
     BrowserModule,
