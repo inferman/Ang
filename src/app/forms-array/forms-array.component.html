@@ -1,0 +1,9 @@
+<input type="text"
+  name="topicName"
+  [(ngModel)]="topicName"
+  (keyup.enter)="addTopicToList()">
+<ul *ngIf="topicsList.length">
+  <li
+    *ngFor="let topic of topicsList; index as i"
+    (click)="removeTopicFromList(i)"> {{ topic }} </li>
+</ul>
