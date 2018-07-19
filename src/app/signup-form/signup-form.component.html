@@ -1,4 +1,5 @@
-<form [formGroup]="myForm">
+<form [formGroup]="myForm" (ngSubmit)="loginMethod()">
+  <div *ngIf="myForm.errors" class="alert alert-danger">Validation Error</div>
   <div class="form-group">
     <label for="username">Username</label>
     <input
@@ -7,9 +8,10 @@
       type="text"
       (change)="onChange(myForm.get('username'), 'username')"
       class="form-control">
+    <div *ngIf="myForm.get('username').pending">Async validation in progress</div>
     <div *ngIf="myForm.get('username').touched && myForm.get('username').invalid" class="alert alert-danger">
       <div *ngIf="myForm.get('username').errors.required">Username is required</div>
-      <div *ngIf="myForm.get('username').errors.shouldBeUniq">Username already exist</div>
+      <div *ngIf="myForm.get('username').errors.shouldBeUnique">Username already exist</div>
     </div>
   </div>
   <div class="form-group">
@@ -26,7 +28,7 @@
       <div *ngIf="password.errors.required">Password is required</div>
       <div *ngIf="password.errors.cannotContainSpace">Password can't contain space</div>
       <div *ngIf="password.errors.minlength">Password should be minimum {{ password.errors.minlength.requiredLength }} characters</div>
-      <div *ngIf="password.errors.shouldBeUniq">Password already exist</div>
+      <div *ngIf="password.errors.shouldBeUnique">Password already exist</div>
     </div>
   </div>
   <button class="btn btn-primary" type="submit">Sign Up</button>

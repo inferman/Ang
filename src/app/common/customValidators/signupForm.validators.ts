@@ -7,11 +7,11 @@ export class SignupValidators {
     }
     return null;
   }
-  static shouldBeUniq(ctrl: AbstractControl): Promise<ValidationErrors | null> {
+  static shouldBeUnique(ctrl: AbstractControl): Promise<ValidationErrors | null> {
     return new Promise((resolve, reject) => {
       setTimeout(() => {
         if ((ctrl.value as string) === 'me') {
-          resolve({shouldBeUniq: true});
+          resolve({shouldBeUnique: true});
         } else { resolve (null); }
       }, 2000);
     });

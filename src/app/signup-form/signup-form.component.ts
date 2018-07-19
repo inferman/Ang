@@ -11,19 +11,25 @@ export class SignupFormComponent {
   myForm = new FormGroup({
     username: new FormControl('',
       Validators.required,
-      SignupValidators.shouldBeUniq
+      SignupValidators.shouldBeUnique
     ),
     password: new FormControl('', [
       Validators.required,
       Validators.minLength(2),
       SignupValidators.cannotContainSpace
     ],
-      SignupValidators.shouldBeUniq
+      SignupValidators.shouldBeUnique
     )
   });
 
   onChange(obj, formCtrl) {
     console.log(formCtrl, obj);
+  }
+
+  loginMethod() {
+    this.myForm.setErrors({
+      invalidLogin: true
+    });
   }
 
   get password() {
