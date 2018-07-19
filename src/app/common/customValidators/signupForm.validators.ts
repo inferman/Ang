@@ -16,4 +16,15 @@ export class SignupValidators {
       }, 2000);
     });
   }
+  static checkOldPassword(ctrl: AbstractControl): Promise<ValidationErrors | null> {
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        if (ctrl.value !== '12345') {
+          resolve({checkOldPassword: true});
+        } else {
+          resolve(null);
+        }
+      }, 2000);
+    });
+  }
 }

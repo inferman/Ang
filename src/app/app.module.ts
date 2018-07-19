@@ -8,6 +8,7 @@ import { InputFormatDirective } from './input-format.directive';
 import { CourseFormComponent } from './course-form/course-form.component';
 import { SignupFormComponent } from './signup-form/signup-form.component';
 import { FormsArrComponent } from './forms-arr/forms-arr.component';
+import { ChangePasswordComponent } from './change-password/change-password.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { FormsArrComponent } from './forms-arr/forms-arr.component';
     InputFormatDirective,
     CourseFormComponent,
     SignupFormComponent,
-    FormsArrComponent
+    FormsArrComponent,
+    ChangePasswordComponent
   ],
   imports: [
     BrowserModule,
