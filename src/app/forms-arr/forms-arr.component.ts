@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import {FormArray, FormGroup, FormControl} from '@angular/forms';
+import {FormArray, FormGroup, FormControl, FormBuilder, Validators} from '@angular/forms';
 
 @Component({
   selector: 'forms-arr',
@@ -8,11 +8,30 @@ import {FormArray, FormGroup, FormControl} from '@angular/forms';
 })
 export class FormsArrComponent {
   form = new FormGroup({
+    name: new FormControl('', Validators.required),
+    contact: new FormGroup({
+      email: new FormControl(),
+      phone: new FormControl()
+    }),
     topics: new FormArray([])
   });
 
+  myForm;
+  constructor(fb: FormBuilder) {
+    this.myForm = fb.group({
+      name: ['', Validators.required],
+      contact: fb.group({
+        email: [],
+        phone: []
+      }),
+      topics: fb.array([])
+    });
+  }
+
+  /* form and myForm is the same, just different implementation */
+
   get topics() {
-    return this.form.get('topics') as FormArray;
+    return this.myForm.get('topics') as FormArray;
   }
 
   addTopic(topic: HTMLInputElement) {
@@ -22,7 +41,6 @@ export class FormsArrComponent {
 
   removeTopic(topic: FormControl) {
     const index = this.topics.controls.indexOf(topic);
-    //this.topics.controls.splice(index, 1);
     this.topics.removeAt(index);
   }
 
