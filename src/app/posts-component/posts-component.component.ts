@@ -1,5 +1,5 @@
-import { Http } from '@angular/http';
 import { Component, OnInit } from '@angular/core';
+import {PostService} from '../services/post.service';
 
 @Component({
   selector: 'posts-component',
@@ -8,37 +8,52 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PostsComponentComponent implements OnInit {
   posts: any[];
-  private url ='https://jsonplaceholder.typicode.com/posts';
-  constructor(private http: Http) {
-    http.get(this.url)
-      .subscribe(response => {
-        this.posts = response.json();
-      });
-  }
+
+  constructor(private service: PostService) { }
+
   createPost(titleInput: HTMLInputElement) {
-    const post = { title: titleInput.value };
+    this.getUserId();
+    const post = {
+      title: titleInput.value,
+      body: '',
+      userId: this.getUserId()
+    };
     titleInput.value = '';
-    this.http.post(this.url, JSON.stringify(post))
+    this.service.createPost(post)
       .subscribe(response => {
         post['id'] = response.json().id;
         this.posts.unshift(post);
+        console.log(this.posts);
       });
   }
 
-  updPost(post) {
-    this.http.patch(`${this.url}/${post.id}`, JSON.stringify({ isRed: true }))
+  getUserId() {
+    const userIdsList = this.posts.map(item => item.userId);
+    const maxId = Math.max.apply(null, userIdsList);
+    const userIdQuantities = this.posts.filter(item =>
+      item.userId === maxId
+    );
+    return userIdQuantities.length < 10 ? maxId : (maxId + 1);
+  }
+
+  patchPost(post) {
+    const patch = { isRed: true };
+    this.service.patchPost(post, patch)
       .subscribe(response => { console.log(response.json()); });
-    //this.http.put(this.url, JSON.stringify(post));
   }
 
   deletePost(post, index) {
-    this.http.delete(`${this.url}/${post.id}`)
+    this.service.deletePost(post.id)
       .subscribe(response => {
         this.posts.splice(index, 1);
       });
   }
 
   ngOnInit() {
+    this.service.getPosts()
+      .subscribe(response => {
+        this.posts = response.json();
+      });
   }
 
 }
