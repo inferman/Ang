@@ -23,8 +23,8 @@ export class PostsComponentComponent implements OnInit {
     };
     titleInput.value = '';
     this.service.create(post)
-      .subscribe(response => {
-        post['id'] = response.json().id;
+      .subscribe(newPost => {
+        post['id'] = newPost.id;
         this.posts.unshift(post);
       }, (error: AppError) => {
         if (error instanceof BadRequest) {
@@ -45,14 +45,12 @@ export class PostsComponentComponent implements OnInit {
   patchPost(post) {
     const patch = { isRed: true };
     this.service.patch(post, patch)
-      .subscribe(response => {
-        console.log(response.json());
-      });
+      .subscribe(patchedPost => console.log(patchedPost) );
   }
 
   deletePost(post, index) {
     this.service.delete(post.id)
-      .subscribe(response => {
+      .subscribe(() => {
         this.posts.splice(index, 1);
       }, (error: AppError) => {
         if (error instanceof NotFoundError) {
@@ -63,9 +61,7 @@ export class PostsComponentComponent implements OnInit {
 
   ngOnInit() {
     this.service.getAll()
-      .subscribe(response => {
-        this.posts = response.json();
-      });
+      .subscribe(posts => this.posts = posts);
   }
 
 }
