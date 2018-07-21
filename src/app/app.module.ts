@@ -5,7 +5,8 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { PostsComponentComponent } from './posts-component/posts-component.component';
-import { PostService } from './services//post.service';
+import { PostService } from './services/post.service';
+import {AppErrorHandler} from './common/app-error-handler';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { PostService } from './services//post.service';
     HttpModule
   ],
   providers: [
-    PostService
+    PostService,
+    { provide: AppErrorHandler, useClass: AppErrorHandler }
   ],
   bootstrap: [AppComponent]
 })

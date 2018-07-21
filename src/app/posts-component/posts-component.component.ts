@@ -29,10 +29,7 @@ export class PostsComponentComponent implements OnInit {
       }, (error: AppError) => {
         if (error instanceof BadRequest) {
            // this.form.setErrors(error.originalError);
-        } else {
-          alert('An unexpected error occurred');
-          console.log(error);
-        }
+        } else { throw error; }
       });
   }
 
@@ -50,22 +47,17 @@ export class PostsComponentComponent implements OnInit {
     this.service.patchPost(post, patch)
       .subscribe(response => {
         console.log(response.json());
-      }, (error: Response) => {
-        console.log(error.json());
       });
   }
 
   deletePost(post, index) {
-    this.service.deletePost(345)
+    this.service.deletePost(post.id)
       .subscribe(response => {
         this.posts.splice(index, 1);
       }, (error: AppError) => {
         if (error instanceof NotFoundError) {
           alert('this post has already deleted');
-        } else {
-          alert('An unexpected error occurred');
-          console.log(error);
-        }
+        } else { throw error; }
       });
   }
 
@@ -73,8 +65,6 @@ export class PostsComponentComponent implements OnInit {
     this.service.getPosts()
       .subscribe(response => {
         this.posts = response.json();
-      }, (error: Response) => {
-        console.log(error.json());
       });
   }
 
