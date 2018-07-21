@@ -22,7 +22,7 @@ export class PostsComponentComponent implements OnInit {
       userId: this.getUserId()
     };
     titleInput.value = '';
-    this.service.createPost(post)
+    this.service.create(post)
       .subscribe(response => {
         post['id'] = response.json().id;
         this.posts.unshift(post);
@@ -44,14 +44,14 @@ export class PostsComponentComponent implements OnInit {
 
   patchPost(post) {
     const patch = { isRed: true };
-    this.service.patchPost(post, patch)
+    this.service.patch(post, patch)
       .subscribe(response => {
         console.log(response.json());
       });
   }
 
   deletePost(post, index) {
-    this.service.deletePost(post.id)
+    this.service.delete(post.id)
       .subscribe(response => {
         this.posts.splice(index, 1);
       }, (error: AppError) => {
@@ -62,7 +62,7 @@ export class PostsComponentComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.service.getPosts()
+    this.service.getAll()
       .subscribe(response => {
         this.posts = response.json();
       });
