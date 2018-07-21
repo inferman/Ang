@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {PostService} from '../services/post.service';
+import {AppError} from '../common/app-error';
+import {NotFoundError} from '../common/not-found-error';
+import {BadRequest} from '../common/bad-request';
 
 @Component({
   selector: 'posts-component',
@@ -8,7 +11,7 @@ import {PostService} from '../services/post.service';
 })
 export class PostsComponentComponent implements OnInit {
   posts: any[];
-
+  form;
   constructor(private service: PostService) { }
 
   createPost(titleInput: HTMLInputElement) {
@@ -23,8 +26,13 @@ export class PostsComponentComponent implements OnInit {
       .subscribe(response => {
         post['id'] = response.json().id;
         this.posts.unshift(post);
-      }, error => {
-        console.log(error.json());
+      }, (error: AppError) => {
+        if (error instanceof BadRequest) {
+          // this.form.setErrors(error.json());
+        } else {
+          alert('An unexpected error occured');
+          console.log(error);
+        }
       });
   }
 
@@ -42,7 +50,7 @@ export class PostsComponentComponent implements OnInit {
     this.service.patchPost(post, patch)
       .subscribe(response => {
         console.log(response.json());
-      }, error => {
+      }, (error: Response) => {
         console.log(error.json());
       });
   }
@@ -51,8 +59,13 @@ export class PostsComponentComponent implements OnInit {
     this.service.deletePost(post.id)
       .subscribe(response => {
         this.posts.splice(index, 1);
-      }, error => {
-        console.log(error.json());
+      }, (error: AppError) => {
+        if (error instanceof NotFoundError) {
+          alert('this post has already deleted');
+        } else {
+          alert('An unexpected error occured');
+          console.log(error);
+        }
       });
   }
 
@@ -60,7 +73,7 @@ export class PostsComponentComponent implements OnInit {
     this.service.getPosts()
       .subscribe(response => {
         this.posts = response.json();
-      }, error => {
+      }, (error: Response) => {
         console.log(error.json());
       });
   }
