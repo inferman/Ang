@@ -23,7 +23,8 @@ export class PostsComponentComponent implements OnInit {
       .subscribe(response => {
         post['id'] = response.json().id;
         this.posts.unshift(post);
-        console.log(this.posts);
+      }, error => {
+        console.log(error.json());
       });
   }
 
@@ -39,13 +40,19 @@ export class PostsComponentComponent implements OnInit {
   patchPost(post) {
     const patch = { isRed: true };
     this.service.patchPost(post, patch)
-      .subscribe(response => { console.log(response.json()); });
+      .subscribe(response => {
+        console.log(response.json());
+      }, error => {
+        console.log(error.json());
+      });
   }
 
   deletePost(post, index) {
     this.service.deletePost(post.id)
       .subscribe(response => {
         this.posts.splice(index, 1);
+      }, error => {
+        console.log(error.json());
       });
   }
 
@@ -53,6 +60,8 @@ export class PostsComponentComponent implements OnInit {
     this.service.getPosts()
       .subscribe(response => {
         this.posts = response.json();
+      }, error => {
+        console.log(error.json());
       });
   }
 
