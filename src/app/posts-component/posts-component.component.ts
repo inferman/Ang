@@ -28,7 +28,7 @@ export class PostsComponentComponent implements OnInit {
         this.posts.unshift(post);
       }, (error: AppError) => {
         if (error instanceof BadRequest) {
-          // this.form.setErrors(error.json());
+           // this.form.setErrors(error.originalError);
         } else {
           alert('An unexpected error occured');
           console.log(error);

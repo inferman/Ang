@@ -20,9 +20,9 @@ export class PostService {
       catchError(
         (error: Response) => {
           if (error.status === 400) {
-            return throwError(new BadRequest());
+            return throwError(new BadRequest(error.json()));
           }
-          return throwError(new AppError());
+          return throwError(new AppError(error.json()));
         })
     );
   }
