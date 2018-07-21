@@ -15,31 +15,23 @@ export class PostsComponentComponent implements OnInit {
   constructor(private service: PostService) { }
 
   createPost(titleInput: HTMLInputElement) {
-    this.getUserId();
-    const post = {
-      title: titleInput.value,
-      body: '',
-      userId: this.getUserId()
-    };
+    const post = { title: titleInput.value };
+    this.posts.unshift(post);
+
     titleInput.value = '';
+
     this.service.create(post)
-      .subscribe(newPost => {
+      .subscribe(
+      newPost => {
         post['id'] = newPost.id;
-        this.posts.unshift(post);
-      }, (error: AppError) => {
+      },
+      (error: AppError) => {
+        this.posts.splice(0, 1);
+
         if (error instanceof BadRequest) {
            // this.form.setErrors(error.originalError);
         } else { throw error; }
       });
-  }
-
-  getUserId() {
-    const userIdsList = this.posts.map(item => item.userId);
-    const maxId = Math.max.apply(null, userIdsList);
-    const userIdQuantities = this.posts.filter(item =>
-      item.userId === maxId
-    );
-    return userIdQuantities.length < 10 ? maxId : (maxId + 1);
   }
 
   patchPost(post) {
@@ -49,10 +41,12 @@ export class PostsComponentComponent implements OnInit {
   }
 
   deletePost(post, index) {
+    this.posts.splice(index, 1);
+
     this.service.delete(post.id)
-      .subscribe(() => {
-        this.posts.splice(index, 1);
-      }, (error: AppError) => {
+      .subscribe(null, (error: AppError) => {
+        this.posts.splice(index, 0, post);
+
         if (error instanceof NotFoundError) {
           alert('this post has already deleted');
         } else { throw error; }
