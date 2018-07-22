@@ -1,0 +1,28 @@
+nav {
+  margin: 15px -15px;
+}
+.navbar-box {
+  padding: 0 15px;
+  background: #f8f9fa;
+}
+.nav-links_list {
+  display: flex;
+  margin: 0;
+  padding: 0;
+}
+.nav-links_list li {
+  display: flex;
+  align-items: center;
+  padding: 15px 10px;
+}
+.nav-links_list > li:hover,
+.nav-links_list > li.active {
+  background: #ccc;
+}
+
+.nav-link {
+  color: #000;
+  text-decoration: none;
+  font-size: 16px;
+  padding: 0;
+}
