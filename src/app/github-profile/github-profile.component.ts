@@ -12,7 +12,7 @@ export class GithubProfileComponent implements OnInit {
 
   ngOnInit() {
     const snapId = this.route.snapshot.paramMap.get('id');
-    console.log(snapId);
+    //console.log(snapId);
 
     /*this.route.paramMap
       .subscribe(params => {
