@@ -11,18 +11,21 @@ import { BadRequest } from '../common/bad-request';
 })
 export class DataService {
   constructor(private url: string, private http: Http) { }
+
   getAll() {
     return this.http.get(this.url).pipe(
       map(response => response.json()),
       catchError(this.handleError)
     );
   }
+
   create(resource) {
-    return this.http.post(this.url, JSON.stringify(resource)).pipe(
-      map(response => response.json()),
-      catchError(this.handleError)
-    );
+      return this.http.post(this.url, JSON.stringify(resource)).pipe(
+        map(response => response.json()),
+        catchError(this.handleError)
+      );
   }
+
   update(resource) {
     return this.http.put(`${this.url}/${resource.id}`, JSON.stringify(resource)).pipe(
       map(response => response.json()),
